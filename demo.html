@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo</title>
+  <script src="bower_components/platform/platform.js"></script>
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="process-arrow.html">
+
+  <style>
+  process-arrow.styled {
+    color: red;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  process-arrow::shadow  {}
+  </style>
+</head>
+<body>
+  <h2>Unstyled</h2>
+
+  <process-arrow
+    stages="['Baby','Child','Teenager','Working-class hero','Retired']" currentStageIndex="3"></process-arrow>
+
+  <h2>Styled</h2>
+<pre><code>
+  process-arrow.styled {
+    color: red;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+</code></pre>
+
+  <process-arrow
+    class="styled"
+    stages="['Baby','Child','Teenager','Working-class hero','Retired']" currentStageIndex="3"></process-arrow>
+
+</body>
+</html>
