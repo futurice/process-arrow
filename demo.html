@@ -4,29 +4,27 @@
   <title>Demo</title>
   <script src="bower_components/platform/platform.js"></script>
   <link rel="import" href="bower_components/polymer/polymer.html">
-  <link rel="import" href="process-arrow.html">
+  <link rel="import" href="futu-process-arrow.html">
 
   <style>
-  process-arrow.styled {
+  futu-process-arrow.styled {
     color: red;
     font-family: "Arial", sans-serif;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
   }
-
-  process-arrow::shadow  {}
   </style>
 </head>
 <body>
   <h2>Unstyled</h2>
 
-  <process-arrow
-    stages="['Baby','Child','Teenager','Working-class hero','Retired']" currentStageIndex="3"></process-arrow>
+  <futu-process-arrow
+    stages="['Baby','Child','Teenager','Working-class hero','Retired']" currentStageIndex="3"></futu-process-arrow>
 
   <h2>Styled</h2>
 <pre><code>
-  process-arrow.styled {
+  futu-process-arrow.styled {
     color: red;
     font-family: "Arial", sans-serif;
     font-weight: bold;
@@ -35,9 +33,9 @@
   }
 </code></pre>
 
-  <process-arrow
+  <futu-process-arrow
     class="styled"
-    stages="['Baby','Child','Teenager','Working-class hero','Retired']" currentStageIndex="3"></process-arrow>
+    stages="['Baby','Child','Teenager','Working-class hero','Retired']" currentStageIndex="3"></futu-process-arrow>
 
 </body>
 </html>
