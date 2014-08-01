@@ -13,6 +13,10 @@ Usage:
         display: block;
       }
 
+      #container {
+        height: 100%;
+      }
+
       .stage-element {
         position: relative;
         margin: 0 2px 0 0;
@@ -24,11 +28,10 @@ Usage:
         position: relative;
         z-index: 1;
         margin: 0;
-        max-height: 100%;
+        width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        line-height: 2;
         color: currentColor;
       }
 
@@ -76,7 +79,7 @@ Usage:
     <div id="container" layout horizontal>
       <template repeat="{{stage in stages}}">
           <div
-            class="stage-element" flex
+            class="stage-element" flex layout horizontal center
             highlighted?="{{ activeStages[stage] }}"
             title="{{ stage }}">
             <p>{{ stage }}</p>
