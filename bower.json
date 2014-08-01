@@ -6,6 +6,7 @@
     "Futurice Oy"
   ],
   "license": "BSD (3-clause)",
+  "main": "futu-process-arrow.html",
   "ignore": [
     "**/.*",
     "node_modules",
