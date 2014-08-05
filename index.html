@@ -7,17 +7,21 @@
   <link rel="import" href="futu-process-arrow.html">
 
   <style>
-  futu-process-arrow.styled {
-    color: #663399;
-    height: 2.5rem;
-    font-family: "Arial", sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
+  body {
+    font-family: sans-serif;
+    line-height: 1.35;
+    padding: 0 1em;
   }
+
+  textarea {
+    margin-left: 1em;
+  }
+
   </style>
 </head>
 <body>
+  <h1>Element live demo</h1>
+
   <h2>Unstyled</h2>
 
   <futu-process-arrow
@@ -31,16 +35,17 @@
   </futu-process-arrow>
 
   <h2>Styled</h2>
-<pre><code>
-  futu-process-arrow.styled {
-    color: #663399;
-    height: 2.5rem;
-    font-family: "Arial", sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-  }
-</code></pre>
+  <p>You can edit the styles here, they are reflected in the element below. &hearts;</p>
+<pre><code>futu-process-arrow.styled {
+<textarea id="styles" cols="40" rows="7">
+color: #663399;
+height: 2.5rem;
+font-family: "Arial", sans-serif;
+font-weight: bold;
+text-transform: uppercase;
+text-align: center;
+</textarea>
+}</code></pre>
 
   <futu-process-arrow
     class="styled"
@@ -53,5 +58,16 @@
     <span>Retired</span>
   </futu-process-arrow>
 
+
+  <script>
+  var styles = document.querySelector("#styles"),
+    el = document.querySelector(".styled");
+
+  el.setAttribute('style', styles.value);
+
+  styles.onkeyup = function() {
+    el.setAttribute('style', styles.value);
+  };
+  </script>
 </body>
 </html>
