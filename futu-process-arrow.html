@@ -6,7 +6,7 @@ Usage:
 @element futu-process-arrow
 @status beta
 -->
-<polymer-element name="futu-process-arrow" attributes="stages currentStageIndex">
+<polymer-element name="futu-process-arrow" attributes="selected">
   <template>
     <style>
       :host {
@@ -75,6 +75,10 @@ Usage:
         max-width: 100%;
       }
 
+      core-select {
+        display: none;
+      }
+
     </style>
     <div id="container" layout horizontal>
       <template repeat="{{stage in stages}}">
@@ -85,6 +89,10 @@ Usage:
             <p>{{ stage }}</p>
           </div>
       </template>
+
+      <core-select id="stages" selected="{{ selected }}">
+        <content select="*"></content>
+      </core-select>
     </div>
   </template>
   <script>
@@ -92,12 +100,29 @@ Usage:
       created: function(){
         this.stages = [];
       },
-      currentStageIndexChanged: function(){
+      ready: function(){
+        this.childrenUpdated();
+      },
+      childrenUpdated: function(observer, mutations){
+        var self = this,
+          nodes = this.querySelectorAll("span");
+
+        [].forEach.call(nodes, function(node){
+          var clone = document.importNode(node, true);
+          self.stages.push(clone.textContent);
+        });
+
+        // Listen for new changes
+        this.onMutation(this, this.childrenUpdated);
+      },
+      selectedChanged: function(){
         this.activeStages = {};
-        for (var i = 0; i < this.stages.length; i++) {
-            if (i <= this.currentStageIndex) {
+        if (this.stages) {
+          for (var i = 0; i < this.stages.length; i++) {
+            if (i <= this.selected) {
               this.activeStages[this.stages[i]] = true;
             }
+          }
         }
       }
     });
