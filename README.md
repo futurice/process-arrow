@@ -10,8 +10,7 @@ There is a [demo page](http://futurice-oss.github.io/futu-process-arrow/),
 please have a look!
 
 
-## How to use it
-
+## Install
 
 If you use Bower, you can simply
 
@@ -21,6 +20,7 @@ bower install --save futurice-oss/futu-process-arrow
 
 Otherwise, save the `futu-process-arrow.html` in your project manually.
 
+## Usage
 
 This is a Polymer component, so you need to have the Polymer Platform referenced in
 your `<head>`. When that's done, just add an HTML import for `futu-process-arrow.html`
