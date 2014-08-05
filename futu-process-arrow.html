@@ -75,7 +75,7 @@ Usage:
         max-width: 100%;
       }
 
-      core-select {
+      #stages {
         display: none;
       }
 
@@ -90,9 +90,9 @@ Usage:
           </div>
       </template>
 
-      <core-select id="stages" selected="{{ selected }}">
+      <div id="stages" selected="{{ selected }}">
         <content select="*"></content>
-      </core-select>
+      </div>
     </div>
   </template>
   <script>
