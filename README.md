@@ -6,7 +6,7 @@ and showing the current stage.
 
 ![](docs/example.png)
 
-There is a [demo page](http://futurice-oss.github.io/futu-process-arrow/),
+There is a [demo page](http://futurice.github.io/futu-process-arrow/),
 please have a look!
 
 
@@ -15,7 +15,7 @@ please have a look!
 If you use Bower, you can simply
 
 ```sh
-bower install --save futurice-oss/futu-process-arrow
+bower install --save futurice/futu-process-arrow
 ```
 
 Otherwise, save the `futu-process-arrow.html` in your project manually.
