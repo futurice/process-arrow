@@ -103,7 +103,7 @@ http://futurice-oss.github.io/futu-process-arrow/
       <template repeat="{{stage in stages}}">
           <div
             class="stage-element" flex layout horizontal center
-            highlighted?="{{ activeStages[stage] }}"
+            highlighted?="{{ stage.stageIndex <= selected }}"
             title="{{ stage.textContent }}">
             <p>{{ stage.textContent }}</p>
           </div>
@@ -127,23 +127,14 @@ http://futurice-oss.github.io/futu-process-arrow/
         var self = this,
           nodes = this.children;
 
-        [].forEach.call(nodes, function(node){
+        [].forEach.call(nodes, function(node, index){
           var clone = document.importNode(node, true);
+          clone.stageIndex = index;
           self.stages.push(clone);
         });
 
         // Listen for new changes
         this.onMutation(this, this.childrenUpdated);
-      },
-      selectedChanged: function(){
-        this.activeStages = {};
-        if (this.stages) {
-          for (var i = 0; i < this.stages.length; i++) {
-            if (i <= this.selected) {
-              this.activeStages[this.stages[i]] = true;
-            }
-          }
-        }
       }
     });
   </script>
