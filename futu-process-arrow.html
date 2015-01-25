@@ -104,8 +104,8 @@ http://futurice-oss.github.io/futu-process-arrow/
           <div
             class="stage-element" flex layout horizontal center
             highlighted?="{{ activeStages[stage] }}"
-            title="{{ stage }}">
-            <p>{{ stage }}</p>
+            title="{{ stage.textContent }}">
+            <p>{{ stage.textContent }}</p>
           </div>
       </template>
 
@@ -123,12 +123,13 @@ http://futurice-oss.github.io/futu-process-arrow/
         this.childrenUpdated();
       },
       childrenUpdated: function(observer, mutations){
+        // select any direct child element
         var self = this,
-          nodes = this.querySelectorAll("span");
+          nodes = this.children;
 
         [].forEach.call(nodes, function(node){
           var clone = document.importNode(node, true);
-          self.stages.push(clone.textContent);
+          self.stages.push(clone);
         });
 
         // Listen for new changes
