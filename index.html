@@ -4,7 +4,7 @@
   <title>Demo</title>
   <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
   <link rel="import" href="bower_components/polymer/polymer.html">
-  <link rel="import" href="futu-process-arrow.html">
+  <link rel="import" href="process-arrow.html">
 
   <style>
   body {
@@ -25,33 +25,33 @@
   <p>Code used to include the process arrow:</p>
 <pre><code>
 &lt;!-- in head --&gt;
-&lt;link rel="import" href="futu-process-arrow.html"&gt;
+&lt;link rel="import" href="process-arrow.html"&gt;
 
 &lt;!-- in body --&gt;
-&lt;futu-process-arrow
+&lt;process-arrow
   selected="3"&gt;
   &lt;span&gt;Baby&lt;/span&gt;
   &lt;span&gt;Child&lt;/span&gt;
   &lt;span&gt;Teenager&lt;/span&gt;
   &lt;span&gt;Working-class hero&lt;/span&gt;
   &lt;span&gt;Retired&lt;/span&gt;
-&lt;/futu-process-arrow&gt;
+&lt;/process-arrow&gt;
 </code></pre>
 
   <h2>Unstyled</h2>
 
-  <futu-process-arrow
+  <process-arrow
     selected="3">
     <span>Baby</span>
     <span>Child</span>
     <span>Teenager</span>
     <span>Working-class hero</span>
     <span>Retired</span>
-  </futu-process-arrow>
+  </process-arrow>
 
   <h2>Styled</h2>
   <p>You can edit the styles here, they are reflected in the element below. &hearts;</p>
-<pre><code>futu-process-arrow.styled {
+<pre><code>process-arrow.styled {
 <textarea id="styles" cols="40" rows="7">
 color: #663399;
 height: 2.5rem;
@@ -62,7 +62,7 @@ text-align: center;
 </textarea>
 }</code></pre>
 
-  <futu-process-arrow
+  <process-arrow
     class="styled"
     selected="3">
     <span>Baby</span>
@@ -70,7 +70,7 @@ text-align: center;
     <span>Teenager</span>
     <span>Working-class hero</span>
     <span>Retired</span>
-  </futu-process-arrow>
+  </process-arrow>
 
 
   <script>

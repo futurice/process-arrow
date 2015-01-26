@@ -1,12 +1,12 @@
 {
-  "name": "futu-process-arrow",
+  "name": "process-arrow",
   "version": "0.3.3",
-  "homepage": "https://github.com/futurice/futu-process-arrow",
+  "homepage": "https://github.com/futurice/process-arrow",
   "authors": [
     "Futurice Oy"
   ],
   "license": "BSD (3-clause)",
-  "main": "futu-process-arrow.html",
+  "main": "process-arrow.html",
   "ignore": [
     "**/.*",
     "node_modules",
