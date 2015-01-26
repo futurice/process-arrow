@@ -7,6 +7,12 @@
   ],
   "license": "BSD (3-clause)",
   "main": "process-arrow.html",
+  "keywords": [
+    "web-components",
+    "process-arrow",
+    "progress-diagram",
+    "polymer"
+  ],
   "ignore": [
     "**/.*",
     "node_modules",
