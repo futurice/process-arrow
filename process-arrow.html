@@ -3,31 +3,31 @@ Copyright (c) 2014, Futurice Oy.
 All rights reserved.
 
 License available at
-https://github.com/futurice-oss/futu-process-arrow/blob/master/LICENSE.txt
+https://github.com/futurice-oss/process-arrow/blob/master/LICENSE.txt
 
 
 Example usage:
-<futu-process-arrow
+<process-arrow
   selected="3">
   <span>Baby</span>
   <span>Child</span>
   <span>Teenager</span>
   <span>Working-class hero</span>
   <span>Retired</span>
-</futu-process-arrow>
+</process-arrow>
 
 You style the process arrow by setting for example the height, color, font,
 text-align and so on for the element itself.
 
 See the demo page for a live example on styling:
-http://futurice-oss.github.io/futu-process-arrow/
+http://futurice-oss.github.io/process-arrow/
 -->
 
 <!--
-@element futu-process-arrow
+@element process-arrow
 @status beta
 -->
-<polymer-element name="futu-process-arrow" attributes="selected">
+<polymer-element name="process-arrow" attributes="selected">
   <template>
     <style>
       :host {
@@ -103,9 +103,9 @@ http://futurice-oss.github.io/futu-process-arrow/
       <template repeat="{{stage in stages}}">
           <div
             class="stage-element" flex layout horizontal center
-            highlighted?="{{ activeStages[stage] }}"
-            title="{{ stage }}">
-            <p>{{ stage }}</p>
+            highlighted?="{{ stage.stageIndex <= selected }}"
+            title="{{ stage.textContent }}">
+            <p>{{ stage.textContent }}</p>
           </div>
       </template>
 
@@ -115,7 +115,7 @@ http://futurice-oss.github.io/futu-process-arrow/
     </div>
   </template>
   <script>
-    Polymer('futu-process-arrow', {
+    Polymer('process-arrow', {
       created: function(){
         this.stages = [];
       },
@@ -123,26 +123,18 @@ http://futurice-oss.github.io/futu-process-arrow/
         this.childrenUpdated();
       },
       childrenUpdated: function(observer, mutations){
+        // select any direct child element
         var self = this,
-          nodes = this.querySelectorAll("span");
+          nodes = this.children;
 
-        [].forEach.call(nodes, function(node){
+        [].forEach.call(nodes, function(node, index){
           var clone = document.importNode(node, true);
-          self.stages.push(clone.textContent);
+          clone.stageIndex = index;
+          self.stages.push(clone);
         });
 
         // Listen for new changes
         this.onMutation(this, this.childrenUpdated);
-      },
-      selectedChanged: function(){
-        this.activeStages = {};
-        if (this.stages) {
-          for (var i = 0; i < this.stages.length; i++) {
-            if (i <= this.selected) {
-              this.activeStages[this.stages[i]] = true;
-            }
-          }
-        }
       }
     });
   </script>
