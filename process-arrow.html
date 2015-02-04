@@ -128,6 +128,9 @@ http://futurice-oss.github.io/process-arrow/
           nodes = this.children;
 
         [].forEach.call(nodes, function(node, index){
+          if (node.tagName.toLowerCase() === "template") {
+            return;
+          }
           var clone = document.importNode(node, true);
           clone.stageIndex = index;
           self.stages.push(clone);
