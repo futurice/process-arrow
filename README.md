@@ -48,3 +48,6 @@ and use the element like so:
   </template>
 </process-arrow>
 ```
+
+## License
+BSD (3-clause)
