@@ -33,10 +33,18 @@ and use the element like so:
 <!-- in body -->
 <process-arrow
   selected="1">
-  <span>Baby</span>
+  <span>Baby</span> <!-- can be any element with textContent -->
   <span>Child</span>
   <span>Teenager</span>
   <span>Working-class hero</span>
   <span>Retired</span>
+</process-arrow>
+
+<!-- OR with data-bindings -->
+<process-arrow
+  selected="1">
+  <template repeat="{{ stage in stages }}">
+    <span>{{ stage }}</span>
+  </template>
 </process-arrow>
 ```
