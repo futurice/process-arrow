@@ -28,25 +28,26 @@
 &lt;link rel="import" href="process-arrow.html"&gt;
 
 &lt;!-- in body --&gt;
-&lt;process-arrow
-  selected="3"&gt;
-  &lt;span&gt;Baby&lt;/span&gt;
-  &lt;span&gt;Child&lt;/span&gt;
-  &lt;span&gt;Teenager&lt;/span&gt;
-  &lt;span&gt;Working-class hero&lt;/span&gt;
-  &lt;span&gt;Retired&lt;/span&gt;
-&lt;/process-arrow&gt;
+  &lt;process-arrow
+    class="styled"
+    selected="3" stages='
+    ["Baby",
+    "Child",
+    "Teenager",
+    "Working-class hero",
+    "Retired"]'&gt;
+  &lt;/process-arrow&gt;
 </code></pre>
 
   <h2>Unstyled</h2>
 
   <process-arrow
-    selected="3">
-    <span>Baby</span>
-    <span>Child</span>
-    <span>Teenager</span>
-    <span>Working-class hero</span>
-    <span>Retired</span>
+    selected="3" stages='
+    ["Baby",
+    "Child",
+    "Teenager",
+    "Working-class hero",
+    "Retired"]'>
   </process-arrow>
 
   <h2>Styled</h2>
@@ -64,12 +65,12 @@ text-align: center;
 
   <process-arrow
     class="styled"
-    selected="3">
-    <span>Baby</span>
-    <span>Child</span>
-    <span>Teenager</span>
-    <span>Working-class hero</span>
-    <span>Retired</span>
+    selected="3" stages='
+    ["Baby",
+    "Child",
+    "Teenager",
+    "Working-class hero",
+    "Retired"]'>
   </process-arrow>
 
 

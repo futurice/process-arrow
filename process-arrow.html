@@ -3,7 +3,7 @@ Copyright (c) 2014, Futurice Oy.
 All rights reserved.
 
 License available at
-https://github.com/futurice-oss/process-arrow/blob/master/LICENSE.txt
+https://github.com/futurice/process-arrow/blob/master/LICENSE.txt
 
 
 Example usage:
@@ -20,92 +20,97 @@ You style the process arrow by setting for example the height, color, font,
 text-align and so on for the element itself.
 
 See the demo page for a live example on styling:
-http://futurice-oss.github.io/process-arrow/
+http://futurice.github.io/process-arrow/
 -->
 
 <!--
 @element process-arrow
 @status beta
 -->
-<polymer-element name="process-arrow" attributes="selected">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<dom-module id="process-arrow">
+  <style>
+    :host {
+      display: block;
+    }
+
+    #container {
+      height: 100%;
+      @apply(--layout-horizontal);
+    }
+
+    .stage-element {
+      position: relative;
+      margin: 0 2px 0 0;
+      padding: 0 0.8em;
+      font-size: 0.7em;
+      @apply(--layout-center-center);
+      @apply(--layout-vertical);
+      @apply(--layout-flex);
+    }
+
+    .stage-element p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: currentColor;
+    }
+
+    .stage-element[highlighted] p {
+      color: #fff;
+    }
+
+    .stage-element::before, .stage-element::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 50%;
+      width: 100%;
+      background-color: rgba(0,0,0,0.1);
+      left: 0;
+    }
+
+    .stage-element::before {
+      top: 0;
+      -webkit-transform: skew(30deg);
+      transform: skew(30deg);
+    }
+
+    .stage-element::after {
+      bottom: 0;
+      -webkit-transform: skew(-30deg);
+      transform: skew(-30deg);
+    }
+
+    .stage-element[highlighted]::before, .stage-element[highlighted]::after {
+      background-color: currentColor;
+    }
+
+    .stage-element:last-child {
+      margin-right: 0;
+    }
+
+    .stage-element core-tooltip {
+      max-width: 100%;
+    }
+
+    #stages {
+      display: none;
+    }
+
+  </style>
   <template>
-    <style>
-      :host {
-        display: block;
-      }
-
-      #container {
-        height: 100%;
-      }
-
-      .stage-element {
-        position: relative;
-        margin: 0 2px 0 0;
-        padding: 0 0.8em;
-        font-size: 0.7em;
-      }
-
-      .stage-element p {
-        position: relative;
-        z-index: 1;
-        margin: 0;
-        width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        color: currentColor;
-      }
-
-      .stage-element[highlighted] p {
-        color: #fff;
-      }
-
-      .stage-element::before, .stage-element::after {
-        content: "";
-        display: block;
-        position: absolute;
-        height: 50%;
-        width: 100%;
-        background-color: rgba(0,0,0,0.1);
-        left: 0;
-      }
-
-      .stage-element::before {
-        top: 0;
-        -webkit-transform: skew(30deg);
-        transform: skew(30deg);
-      }
-
-      .stage-element::after {
-        bottom: 0;
-        -webkit-transform: skew(-30deg);
-        transform: skew(-30deg);
-      }
-
-      .stage-element[highlighted]::before, .stage-element[highlighted]::after {
-        background-color: currentColor;
-      }
-
-      .stage-element:last-child {
-        margin-right: 0;
-      }
-
-      .stage-element core-tooltip {
-        max-width: 100%;
-      }
-
-      #stages {
-        display: none;
-      }
-
-    </style>
-    <div id="container" layout horizontal>
-      <template repeat="{{stage in stages}}">
+    <div id="container">
+      <template is="dom-repeat" items="{{stages}}">
           <div
-            class="stage-element" flex layout horizontal center
-            highlighted?="{{ stage.stageIndex <= selected }}"
-            title="{{ stage.textContent }}">
-            <p>{{ stage.textContent }}</p>
+            class="stage-element"
+            highlighted$="{{isHighlighted(index)}}"
+            title="{{ item }}">
+            <p>{{ item }}</p>
           </div>
       </template>
 
@@ -114,31 +119,27 @@ http://futurice-oss.github.io/process-arrow/
       </div>
     </div>
   </template>
-  <script>
-    Polymer('process-arrow', {
-      created: function(){
-        this.stages = [];
+</dom-module>
+<script>
+  Polymer({
+    is: 'process-arrow',
+    properties: {
+      selected: {
+        type: Number,
+        value: 1
       },
-      ready: function(){
-        this.childrenUpdated();
-      },
-      childrenUpdated: function(observer, mutations){
-        // select any direct child element
-        var self = this,
-          nodes = this.children;
-
-        [].forEach.call(nodes, function(node, index){
-          if (node.tagName.toLowerCase() === "template") {
-            return;
-          }
-          var clone = document.importNode(node, true);
-          clone.stageIndex = index;
-          self.stages.push(clone);
-        });
-
-        // Listen for new changes
-        this.onMutation(this, this.childrenUpdated);
+      stages: {
+        type: Array,
+        value: [
+          'A',
+          'B',
+          'C',
+          'D'
+        ]
       }
-    });
-  </script>
-</polymer-element>
+    },
+    isHighlighted: function(index){
+      return index <= this.selected;
+    }
+  });
+</script>

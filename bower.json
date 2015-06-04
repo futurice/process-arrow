@@ -1,6 +1,6 @@
 {
   "name": "process-arrow",
-  "version": "0.3.5",
+  "version": "1.0.0",
   "homepage": "https://github.com/futurice/process-arrow",
   "authors": [
     "Futurice Oy"
@@ -21,6 +21,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.5.4"
+    "polymer": "~1.0.2",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#~1.0.1"
   }
 }

@@ -31,22 +31,15 @@ and use the element like so:
 <link rel="import" href="bower_components/process-arrow/process-arrow.html">
 
 <!-- in body -->
-<process-arrow
-  selected="1">
-  <span>Baby</span> <!-- can be any element with textContent -->
-  <span>Child</span>
-  <span>Teenager</span>
-  <span>Working-class hero</span>
-  <span>Retired</span>
-</process-arrow>
+  <process-arrow
+    selected="3" stages='
+    ["Baby",
+    "Child",
+    "Teenager",
+    "Working-class hero",
+    "Retired"]'>
+  </process-arrow>
 
-<!-- OR with data-bindings -->
-<process-arrow
-  selected="1">
-  <template repeat="{{ stage in stages }}">
-    <span>{{ stage }}</span>
-  </template>
-</process-arrow>
 ```
 
 ## License
